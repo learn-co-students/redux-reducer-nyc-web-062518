@@ -1,28 +1,10 @@
 export function manageFriends(state, action){
-}
-
-manageFriends = (state, action) => {
   switch (action.type) {
     case 'ADD_FRIEND':
-      return {friends: [{
-        name: 'Avi',
-        hometown: 'NYC',
-        id: 100
-      }, {
-        name: 'Joe',
-        hometown: 'Boston',
-        id: 101
-      }]}
+      return {friends: [...state.friends, action.friend]}
     case 'REMOVE_FRIEND':
-      return {friends: [{
-        name: 'Avi',
-        hometown: 'NYC',
-        id: 100
-      }, {
-        name: 'Steven',
-        hometown: 'Philadephia',
-        id: 102
-      }]}
+      let updatedFriends = state.friends.filter(friend => friend.id !== action.id)
+      return {friends: updatedFriends}
     default:
       return state
   }
